@@ -34,7 +34,7 @@ class Guess
 
     loop do
       guess = gets.chomp.downcase
-      if guess == "save" || guess == exit_condition
+      if guess == 'save' || guess == exit_condition
         set_guess(guess)
         return
       elsif get_has_guessed.include?(guess)
@@ -45,7 +45,7 @@ class Guess
         set_guess(guess)
         return
       else
-        puts "Invalid input. Enter a single letter [a-z]:"
+        puts 'Invalid input. Enter a single letter [a-z]:'
       end
     end
   end

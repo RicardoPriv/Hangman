@@ -20,10 +20,11 @@ class Hangman
       index = rand(0..option_copy.length - 1)
       possible_word = option_copy[index].chomp
       return possible_word if possible_word.length.between?(WORD_LENGTH[:min], WORD_LENGTH[:max])
+
       option_copy.delete_at(index)
     end
 
-    ""
+    ''
   end
 
   def initialize_word!(word, revealed)
@@ -33,9 +34,7 @@ class Hangman
 
   def apply_guess!(guess_letter)
     get_word.each_with_index do |letter, index|
-      if letter[:letter] == guess_letter && !letter[:revealed]
-        get_word[index][:revealed] = true
-      end
+      get_word[index][:revealed] = true if letter[:letter] == guess_letter && !letter[:revealed]
     end
   end
 
@@ -48,6 +47,6 @@ class Hangman
   end
 
   def formatted_word(overide_reveal)
-    get_word.map { |word_struct| overide_reveal || word_struct[:revealed] ? word_struct[:letter] : "_" }.join(" ")
+    get_word.map { |word_struct| overide_reveal || word_struct[:revealed] ? word_struct[:letter] : '_' }.join(' ')
   end
 end

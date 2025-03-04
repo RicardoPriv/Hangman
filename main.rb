@@ -1,4 +1,4 @@
-require_relative "lib/gameplay"
+require_relative 'lib/gameplay'
 
 include Gameplay
 
