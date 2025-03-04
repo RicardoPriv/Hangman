@@ -41,8 +41,7 @@ class Hangman
     set_word(current_word)
   end
 
-  def apply_guess!(guess_letter)
-    letter_index = get_word.find_index {|letter_state| letter_state[0] == guess_letter && letter_state[1] == false}
+  def apply_guess!(guess_letter, letter_index)
     if letter_index
       new_word = get_word
       new_word[letter_index][:revealed] = true
@@ -51,6 +50,10 @@ class Hangman
     else
       return false
     end
+  end
+
+  def check_guess?(guess_letter)
+    return get_word.find_index {|letter_state| letter_state[0] == guess_letter && letter_state[1] == false}
   end
 
   def win_game?
