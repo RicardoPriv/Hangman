@@ -12,6 +12,8 @@ This is a command-line Hangman game written in Ruby. The objective of the game i
 - The game ends when the player either guesses the entire word or runs out of attempts.
 - Prevents duplicate guesses.
 - Provides clear feedback after each guess.
+- Ability to save and load game progress.
+- Supports exit condition via the "1" key.
 
 ## Requirements
 
@@ -30,7 +32,7 @@ git clone https://github.com/RicardoPriv/Hangman.git
 cd Hangman
 ```
 
-2. Install dependencies:
+2. Install dependencies (if required):
 
 ```bash
 bundle install
@@ -61,7 +63,6 @@ Correct guess!
 
 Current word: _ e _ _ _
 Remaining guesses: 6
-
 ```
 
 ## Game Flow
@@ -73,11 +74,27 @@ Remaining guesses: 6
 5. The game continues until the player wins or loses.
 6. At the end, the correct word is displayed.
 
+## Exit Condition
+
+The game includes an **exit condition**. To quit the game at any time, type `1` when prompted for a guess.
+
+## Saving and Loading Games
+
+You can save the current game progress to a file and load a saved game later. When the game prompts you with "Would you like to load a save?", simply type the filename of the saved game (without the `.json` extension) to continue from where you left off.
+
+To save a game:
+- Type `"save"` when prompted for a guess.
+- Provide a filename to store the progress.
+
+To load a game:
+- The game will display a list of available saved games and prompt you to enter the filename to load.
+
 ## Files
 
 - **main.rb**: The entry point of the game.
 - **lib/gameplay.rb**: Contains the main game logic.
 - **lib/hangman.rb**: Manages the word selection and game rules.
 - **lib/guess.rb**: Handles player input and guess tracking.
+- **lib/file_handler.rb**: Manages the loading and saving of game states.
 - **resources/dictionary.txt**: Contains the list of words used in the game.
 - **Gemfile**: Specifies the dependencies required for the project.

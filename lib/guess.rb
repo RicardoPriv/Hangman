@@ -29,14 +29,16 @@ class Guess
     @guess_count += amount
   end
 
-  def guess_from_user!
+  def guess_from_user!(exit_condition)
     puts "\nPlease enter your guess [a to z]: "
-    
+
     loop do
       guess = gets.chomp.downcase
-      
-      if get_has_guessed.include?(guess)
-        puts "Already guessed '#{guess}'. Try another letter."
+      if guess == "save" || guess == exit_condition
+        set_guess(guess)
+        return
+      elsif get_has_guessed.include?(guess)
+        puts "You've already guessed '#{guess}'. Try another letter."
       elsif guess.length == 1 && guess.match?(/[a-z]/)
         add_has_guessed(guess)
         inc_guess_count(1)
